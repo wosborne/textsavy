@@ -2,7 +2,7 @@
 service: textsavy
 
 # Name of the container image.
-image: your-user/textsavy
+image: wosbornedocker/textsavy
 
 # Deploy to these servers.
 servers:
