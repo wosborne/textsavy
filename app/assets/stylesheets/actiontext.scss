@@ -4,7 +4,7 @@
 
 trix-editor {
   @extend .textarea;
-}
+  height: auto; }
 
 trix-toolbar * {
   box-sizing: border-box; }
