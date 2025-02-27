@@ -3,12 +3,8 @@
 */
 
 trix-editor {
-  border: 1px solid #bbb;
-  border-radius: 3px;
-  margin: 0;
-  padding: 0.4em 0.6em;
-  min-height: 5em;
-  outline: none; }
+  @extend .textarea;
+}
 
 trix-toolbar * {
   box-sizing: border-box; }
@@ -51,7 +47,7 @@ trix-toolbar .trix-button {
   border: none;
   border-bottom: 1px solid #ddd;
   border-radius: 0;
-  background: transparent; }
+  background: var(--bulma-primary-100); }
   trix-toolbar .trix-button:not(:first-child) {
     border-left: 1px solid #ccc; }
   trix-toolbar .trix-button.trix-active {
@@ -346,8 +342,10 @@ trix-editor .attachment__metadata {
     margin: 0;
     padding: 0; }
   .trix-content h1 {
-    font-size: 1.2em;
-    line-height: 1.2; }
+    @extend .title
+  }
+    //font-size: 1.2em;
+    //line-height: 1.2; }
   .trix-content blockquote {
     border: 0 solid #ccc;
     border-left-width: 0.3em;
