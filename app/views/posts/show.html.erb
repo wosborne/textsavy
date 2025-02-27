@@ -1,7 +1,33 @@
-<section class="section">
-  <div class="container is-max-tablet">
-    <h1 class="title"><%= @post.title %></h1>
+<div class="container is-max-tablet">
+  <section class="section">
+    <nav class="level">
+      <div class="level-left">
+        <%= link_to posts_path, class: "button is-ghost" do %>
+          <span class="icon">
+            <i class="fas fa-arrow-left"></i>
+          </span>
+          <span>Back to posts</span>
+        <% end %>
+      </div>
 
+      <div class="level-right">
+        <% if current_user %>
+          <%= link_to edit_post_path(@post), class: "button" do %>
+            <span class="icon">
+              <i class="fas fa-edit"></i>
+            </span>
+            <span>Edit</span>
+          <% end %>
+        <% end %>
+      </div>
+    </nav>
+
+    <h1 class="title is-size-1"><%= @post.title %></h1>
+    <p>Published <%= time_ago_in_words(@post.created_at) %> ago</p>
+    <p>Updated <%= time_ago_in_words(@post.updated_at) %> ago</p>
+  </section>
+
+  <section class="section">
     <%= @post.content %>
-  </div>
-</section>
+  </section>
+</div>

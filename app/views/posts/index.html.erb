@@ -1,8 +1,22 @@
-<h1>Posts</h1>
+<div class="container is-max-tablet">
+  <section class="section">
+    <h1 class="title is-size-1">Posts</h1>
 
-<%= link_to "New Post", new_post_path %>
+    <% if current_user %>
+      <%= link_to "New Post", new_post_path, class: "button" %>
+    <% end %>
+  </section>
 
-<% @posts.each do |post| %>
-  <h2><%= post.title %></h2>
-  <p><%= post.content %></p>
-<% end %>
+  <section class="section">
+    <div class="posts">
+      <% @posts.each do |post| %>
+        <%= link_to post_path(post) do %>
+          <div class="box is-shadowless is-clickable">
+            <h2 class="title is-size-3"><%= post.title %></h2>
+            <%= post.content %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+</div>

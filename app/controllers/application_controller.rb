@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   def current_user
-    @current_user ||= Current.session&.user
+    @current_user ||= authenticated? && Current.session&.user
   end
 end

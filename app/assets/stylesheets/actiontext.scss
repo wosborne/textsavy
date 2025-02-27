@@ -4,7 +4,8 @@
 
 trix-editor {
   @extend .textarea;
-  height: auto; }
+  height: auto;
+  max-height: none !important; }
 
 trix-toolbar * {
   box-sizing: border-box; }
@@ -334,6 +335,7 @@ trix-editor .attachment__metadata {
     white-space: nowrap; }
 
 .trix-content {
+  @extend .content;
   line-height: 1.5;
   overflow-wrap: break-word;
   word-break: break-word; }
