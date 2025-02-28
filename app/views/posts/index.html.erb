@@ -8,6 +8,38 @@
   </section>
 
   <section class="section">
+    <% if current_user %>
+      <div class="field has-addons">
+        <p class="control">
+          <%= link_to "All", posts_path, class: "button" %>
+        </p>
+
+        <p class="control">
+          <%= link_to posts_path(post: { archived: false }), class: "button" do %>
+            <span class="icon">
+              <i class="fas fa-bolt"></i>
+            </span>
+            <span>Live</span>
+          <% end %>
+        </p>
+
+        <p class="control">
+          <%= link_to posts_path(post: { archived: true }), class: "button" do %>
+            <span class="icon">
+              <i class="fas fa-box-archive"></i>
+            </span>
+            <span>Archive</span>
+          <% end %>
+        </p>
+      </div>
+
+      <article class="message is-warning is-small">
+        <div class="message-body">
+          Readers can only see live posts
+        </div>
+      </article>
+    <% end %>
+
     <div class="posts">
       <% @posts.each do |post| %>
         <%= link_to post_path(post), class: "box is-clickable is-shadowless" do %>
@@ -21,6 +53,24 @@
                 <div class="content">
                     <h2 class="title is-size-5 m-0"><%= post.title %></h2>
                     <%= post.content.to_plain_text.truncate(200) %>
+                </div>
+
+                <div class="field is-grouped is-grouped-multiline">
+                  <div class="control">
+                    <div class="tags has-addons">
+                      <span class="tag is-primary">Published</span>
+                      <span class="tag"><%= post.created_at.strftime("%e %b %Y %H:%M") %></span>
+                    </div>
+                  </div>
+
+                  <% if post.archived %>
+                    <div class="control">
+                      <span class="tag is-warning is-normal">
+                        <i class="fas fa-box-archive mr-1"></i>
+                        Archived
+                      </span>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </article>

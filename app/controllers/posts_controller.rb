@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   allow_unauthenticated_access only: %w[index show]
   def index
-    @posts = Post.all.with_rich_text_content
+    @posts = get_posts.order(created_at: :desc).with_rich_text_content
   end
 
   def new
@@ -47,5 +47,15 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :content, :archived)
+  end
+
+  def get_posts
+    if current_user && params[:post]
+      Post.where(post_params)
+    elsif current_user
+      Post.all
+    else
+      Post.where.not(archived: true)
+    end
   end
 end

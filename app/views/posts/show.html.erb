@@ -38,6 +38,15 @@
           <span class="tag"><%= @post.updated_at.strftime("%e %b %Y %H:%M") %></span>
         </div>
       </div>
+
+      <% if @post.archived %>
+        <div class="control">
+          <span class="tag is-warning is-normal">
+            <i class="fas fa-box-archive mr-1"></i>
+            Archived
+          </span>
+        </div>
+      <% end %>
     </div>
   </section>
 
@@ -45,25 +54,27 @@
     <%= @post.content %>
   </section>
 
-  <section class="section">
-    <div class="level">
-      <div class="level-left">
-        <%= button_to post_path(@post), method: :patch, params: { post: { archived: true }}, class: "button is-warning is-outlined" do %>
-          <span class="icon">
-            <i class="fas fa-box-archive"></i>
-          </span>
-          <span>Archive</span>
-        <% end %>
-      </div>
+  <% if current_user %>
+    <section class="section">
+      <div class="level">
+        <div class="level-left">
+          <%= button_to post_path(@post), method: :patch, params: { post: { archived: true }}, class: "button is-warning is-outlined" do %>
+            <span class="icon">
+              <i class="fas fa-box-archive"></i>
+            </span>
+            <span>Archive</span>
+          <% end %>
+        </div>
 
-      <div class="level-right">
-        <%= button_to post_path(@post), method: :delete, data: { turbo_confirm: 'Are you sure? This will permanently delete this post.' }, class: "button is-danger is-outlined" do %>
-          <span class="icon">
-            <i class="fas fa-trash"></i>
-          </span>
-          <span>Delete</span>
-        <% end %>
+        <div class="level-right">
+          <%= button_to post_path(@post), method: :delete, data: { turbo_confirm: 'Are you sure? This will permanently delete this post.' }, class: "button is-danger is-outlined" do %>
+            <span class="icon">
+              <i class="fas fa-trash"></i>
+            </span>
+            <span>Delete</span>
+          <% end %>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  <% end %>
 </div>
