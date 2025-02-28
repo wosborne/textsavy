@@ -10,11 +10,20 @@
   <section class="section">
     <div class="posts">
       <% @posts.each do |post| %>
-        <%= link_to post_path(post) do %>
-          <div class="box is-shadowless is-clickable">
-            <h2 class="title is-size-3"><%= post.title %></h2>
-            <%= post.content %>
-          </div>
+        <%= link_to post_path(post), class: "box is-clickable is-shadowless" do %>
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <%= image_tag(url_for(post.content.embeds.first)) %>
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                    <h2 class="title is-size-5 m-0"><%= post.title %></h2>
+                    <%= post.content.to_plain_text.truncate(200) %>
+                </div>
+              </div>
+            </article>
         <% end %>
       <% end %>
     </div>

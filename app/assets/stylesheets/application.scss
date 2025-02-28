@@ -2,11 +2,3 @@
 @use "bulma";
 
 @import "actiontext";
-
-.posts a {
-  color: var(--bulma-box-color)
-}
-
-.posts .box:hover {
-  background-color: var(--bulma-light);
-  cursor: pointer; }
