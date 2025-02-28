@@ -1,18 +1,18 @@
 <div class="container is-max-tablet">
   <section class="section">
-    <nav class="level">
+    <div class="level">
       <div class="level-left">
         <%= link_to posts_path, class: "button is-ghost" do %>
           <span class="icon">
             <i class="fas fa-arrow-left"></i>
           </span>
-          <span>Back to posts</span>
+          <span>Blog</span>
         <% end %>
       </div>
 
       <div class="level-right">
         <% if current_user %>
-          <%= link_to edit_post_path(@post), class: "button" do %>
+          <%= link_to edit_post_path(@post), class: "button is-info" do %>
             <span class="icon">
               <i class="fas fa-edit"></i>
             </span>
@@ -20,14 +20,50 @@
           <% end %>
         <% end %>
       </div>
-    </nav>
+    </div>
 
     <h1 class="title is-size-1"><%= @post.title %></h1>
-    <p>Published <%= time_ago_in_words(@post.created_at) %> ago</p>
-    <p>Updated <%= time_ago_in_words(@post.updated_at) %> ago</p>
+
+    <div class="field is-grouped is-grouped-multiline">
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag is-primary">Published</span>
+          <span class="tag"><%= @post.created_at.strftime("%e %b %Y %H:%M") %></span>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag is-info">Updated</span>
+          <span class="tag"><%= @post.updated_at.strftime("%e %b %Y %H:%M") %></span>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="section">
     <%= @post.content %>
+  </section>
+
+  <section class="section">
+    <div class="level">
+      <div class="level-left">
+        <%= button_to post_path(@post), method: :patch, params: { post: { archived: true }}, class: "button is-warning is-outlined" do %>
+          <span class="icon">
+            <i class="fas fa-box-archive"></i>
+          </span>
+          <span>Archive</span>
+        <% end %>
+      </div>
+
+      <div class="level-right">
+        <%= button_to post_path(@post), method: :delete, data: { turbo_confirm: 'Are you sure? This will permanently delete this post.' }, class: "button is-danger is-outlined" do %>
+          <span class="icon">
+            <i class="fas fa-trash"></i>
+          </span>
+          <span>Delete</span>
+        <% end %>
+      </div>
+    </div>
   </section>
 </div>
