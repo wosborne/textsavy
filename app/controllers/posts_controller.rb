@@ -49,13 +49,11 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :content, :archived)
   end
 
+  def filter_params
+    params.permit(filter: [ :archived ])
+  end
+
   def get_posts
-    if current_user && params[:post]
-      Post.where(post_params)
-    elsif current_user
-      Post.all
-    else
-      Post.where.not(archived: true)
-    end
+    current_user ? Post.where(filter_params[:filter]) : Post.where(archived: false)
   end
 end

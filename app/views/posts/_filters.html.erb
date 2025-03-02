@@ -1,0 +1,23 @@
+<div class="field has-addons">
+  <p class="control">
+    <%= link_to "All", posts_path, class: "button #{"is-selected is-info" unless params[:filter]}" %>
+  </p>
+
+  <p class="control">
+    <%= link_to posts_path(filter: { archived: false }), class: "button #{filter_active?(:archived, 'false')}" do %>
+      <span class="icon">
+        <i class="fas fa-bolt"></i>
+      </span>
+      <span>Live</span>
+    <% end %>
+  </p>
+
+  <p class="control">
+    <%= link_to posts_path(filter: { archived: true }), class: "button #{filter_active?(:archived, 'true')}" do %>
+      <span class="icon">
+        <i class="fas fa-box-archive"></i>
+      </span>
+      <span>Archive</span>
+    <% end %>
+  </p>
+</div>

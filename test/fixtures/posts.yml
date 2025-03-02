@@ -4,9 +4,10 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  title: My First Post
-  content: "<div>It feels good to be read.</div>"
+live:
+  title: A Live Post
+  archived: false
 
-two: {}
-# column: value
+archived:
+  title: An Archived Post
+  archived: true

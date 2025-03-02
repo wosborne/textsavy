@@ -53,28 +53,4 @@
   <section class="section">
     <%= @post.content %>
   </section>
-
-  <% if current_user %>
-    <section class="section">
-      <div class="level">
-        <div class="level-left">
-          <%= button_to post_path(@post), method: :patch, params: { post: { archived: true }}, class: "button is-warning is-outlined" do %>
-            <span class="icon">
-              <i class="fas fa-box-archive"></i>
-            </span>
-            <span>Archive</span>
-          <% end %>
-        </div>
-
-        <div class="level-right">
-          <%= button_to post_path(@post), method: :delete, data: { turbo_confirm: 'Are you sure? This will permanently delete this post.' }, class: "button is-danger is-outlined" do %>
-            <span class="icon">
-              <i class="fas fa-trash"></i>
-            </span>
-            <span>Delete</span>
-          <% end %>
-        </div>
-      </div>
-    </section>
-  <% end %>
 </div>

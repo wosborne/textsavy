@@ -1,6 +1,8 @@
 /*
  * Default Trix editor styles. See Action Text overwrites below.
 */
+@use "sass/form";
+@use "sass/elements";
 
 trix-editor {
   @extend .textarea;
@@ -344,7 +346,7 @@ trix-editor .attachment__metadata {
     margin: 0;
     padding: 0; }
   .trix-content h1 {
-    @extend .title
+    @extend .title;
   }
     //font-size: 1.2em;
     //line-height: 1.2; }

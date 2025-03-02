@@ -1,36 +1,22 @@
 <div class="container is-max-tablet">
   <section class="section">
-    <h1 class="title is-size-1">Posts</h1>
-
-    <% if current_user %>
-      <%= link_to "New Post", new_post_path, class: "button" %>
-    <% end %>
+    <h1 class="title is-size-1">Blog</h1>
   </section>
 
   <section class="section">
     <% if current_user %>
-      <div class="field has-addons">
-        <p class="control">
-          <%= link_to "All", posts_path, class: "button" %>
-        </p>
-
-        <p class="control">
-          <%= link_to posts_path(post: { archived: false }), class: "button" do %>
-            <span class="icon">
-              <i class="fas fa-bolt"></i>
-            </span>
-            <span>Live</span>
+      <div class="level">
+        <div class="level-left">
+          <%= render "filters" %>
+        </div>
+        <div class="level-right">
+          <%= link_to new_post_path, class: "button is-primary is-outlined" do %>
+          <span class="icon">
+            <i class="fas fa-plus"></i>
+          </span>
+            <span>New post</span>
           <% end %>
-        </p>
-
-        <p class="control">
-          <%= link_to posts_path(post: { archived: true }), class: "button" do %>
-            <span class="icon">
-              <i class="fas fa-box-archive"></i>
-            </span>
-            <span>Archive</span>
-          <% end %>
-        </p>
+        </div>
       </div>
 
       <article class="message is-warning is-small">
