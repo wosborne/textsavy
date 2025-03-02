@@ -1,7 +1,7 @@
 require "application_system_test_case"
 
 class CreatePostTest < ApplicationSystemTestCase
-  test "should create a post" do
+  test "authenticated users can create a post" do
     sign_in_as(users(:one))
 
     click_on "New post"
@@ -17,11 +17,9 @@ class CreatePostTest < ApplicationSystemTestCase
     assert_selector "div.trix-content", text: "Some content."
   end
 
-  test "should not display New post button to unauthenticated users" do
-    visit root_url
+  test "unauthenticated users are redirected to sign in" do
+    visit new_post_path
 
-    assert_selector "h1", text: "Blog"
-
-    assert_no_link "New post"
+    assert_text "Sign in"
   end
 end
