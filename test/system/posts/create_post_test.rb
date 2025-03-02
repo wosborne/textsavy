@@ -4,24 +4,24 @@ class CreatePostTest < ApplicationSystemTestCase
   test "should create a post" do
     sign_in_as(users(:one))
 
-    click_on "New Post"
+    click_on "New post"
 
     assert_selector "h1", text: "New Post"
 
     fill_in "Title", with: "New Post Title"
-    find("trix-editor").click.set("New text")
+    fill_in_rich_text_area "post_content", with: "Some content."
 
     click_on "Create Post"
 
     assert_selector "h1", text: "New Post Title"
-    assert_selector "div", text: "New text"
+    assert_selector "div.trix-content", text: "Some content."
   end
 
-  test "should redirect unauthenticated user to sign in" do
+  test "should not display New post button to unauthenticated users" do
     visit root_url
 
-    click_on "New Post"
+    assert_selector "h1", text: "Blog"
 
-    assert_no_selector "h1", text: "New Post"
+    assert_no_link "New post"
   end
 end
