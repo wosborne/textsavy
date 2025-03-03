@@ -31,8 +31,14 @@
         <%= link_to post_path(post), class: "box is-clickable is-shadowless" do %>
             <article class="media">
               <figure class="media-left">
-                <p class="image is-64x64">
-                  <%= image_tag(url_for(post.content.embeds.first)) %>
+                <p class="image is-64x64 has-text-centered">
+                  <% if post.content.embeds.any? %>
+                    <%= image_tag(url_for(post.content.embeds.first)) %>
+                  <% else %>
+                    <span class="icon is-large">
+                      <i class="fas fa-newspaper fa-2x"></i>
+                    </span>
+                  <% end %>
                 </p>
               </figure>
               <div class="media-content">
