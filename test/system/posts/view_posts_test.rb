@@ -21,12 +21,21 @@ class ViewPostsTest < ApplicationSystemTestCase
     assert_no_text "I've been archived!"
   end
 
-  test "authenticated users can see post filters" do
+  test "authenticated users can filter posts" do
     sign_in_as(users(:one))
 
-    assert_link "All"
-    assert_selector ".button", text: "Live"
-    assert_link "Archive"
+    assert_text "A Live Post"
+    assert_text "An Archived Post"
+
+    click_on "Live"
+
+    assert_text "A Live Post"
+    assert_no_text "An Archived Post"
+
+    click_on "Archive"
+
+    assert_no_text "A Live Post"
+    assert_text "An Archived Post"
   end
 
   test "unauthenticated users can't see post filters" do
