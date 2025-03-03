@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class PostsTest < ApplicationSystemTestCase
+class ViewPostsTest < ApplicationSystemTestCase
   test "authenticated user see's all posts" do
     sign_in_as(users(:one))
 

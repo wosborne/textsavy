@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class ViewingAPostTest < ApplicationSystemTestCase
+class ViewPostTest < ApplicationSystemTestCase
   test "authenticated user can see edit button" do
     sign_in_as(users(:one))
 
@@ -30,6 +30,6 @@ class ViewingAPostTest < ApplicationSystemTestCase
   test "unauthenticated user is redirected to root when visiting archived post" do
     visit post_path(posts(:archived))
 
-    assert_current_path root_path
+    assert_current_path new_session_path
   end
 end

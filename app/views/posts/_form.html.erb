@@ -5,10 +5,12 @@
     <div class="control">
       <%= form.text_field :title, class: "input", placeholder: "Title" %>
     </div>
+    <%= render "shared/errors_for", object: @post, attr: :title %>
   </div>
 
   <div class="field">
     <%= form.rich_textarea :content %>
+    <%= render "shared/errors_for", object: @post, attr: :content %>
   </div>
 
   <div class="level">

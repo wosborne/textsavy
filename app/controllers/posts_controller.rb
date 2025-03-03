@@ -63,6 +63,6 @@ class PostsController < ApplicationController
   def protect_archived_post
     return unless @post.archived?
 
-    redirect_to root_path unless current_user
+    require_authentication
   end
 end

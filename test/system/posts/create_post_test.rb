@@ -22,4 +22,18 @@ class CreatePostTest < ApplicationSystemTestCase
 
     assert_text "Sign in"
   end
+
+  test "returns errors if required fields missing" do
+    sign_in_as(users(:one))
+
+    click_on "New post"
+
+    fill_in "Title", with: ""
+    fill_in_rich_text_area "post_content", with: ""
+
+    click_on "Create Post"
+
+    assert_text "Title can't be blank"
+    assert_text "Content can't be blank"
+  end
 end
