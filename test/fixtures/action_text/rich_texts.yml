@@ -1,0 +1,9 @@
+ one:
+   record: live (Post)
+   name: content
+   body: <p>In a <i>million</i> stars!</p>
+
+ two:
+    record: archived (Post)
+    name: content
+    body: <p>I've <i>been</i> archived!</p>

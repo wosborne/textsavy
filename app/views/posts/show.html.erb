@@ -1,0 +1,56 @@
+<div class="container is-max-tablet">
+  <section class="section">
+    <div class="level">
+      <div class="level-left">
+        <%= link_to posts_path, class: "button is-ghost" do %>
+          <span class="icon">
+            <i class="fas fa-arrow-left"></i>
+          </span>
+          <span>Blog</span>
+        <% end %>
+      </div>
+
+      <div class="level-right">
+        <% if current_user %>
+          <%= link_to edit_post_path(@post), class: "button is-info" do %>
+            <span class="icon">
+              <i class="fas fa-edit"></i>
+            </span>
+            <span>Edit</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <h1 class="title is-size-1"><%= @post.title %></h1>
+
+    <div class="field is-grouped is-grouped-multiline">
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag is-primary">Published</span>
+          <span class="tag"><%= @post.created_at.strftime("%e %b %Y %H:%M") %></span>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag is-info">Updated</span>
+          <span class="tag"><%= @post.updated_at.strftime("%e %b %Y %H:%M") %></span>
+        </div>
+      </div>
+
+      <% if @post.archived %>
+        <div class="control">
+          <span class="tag is-warning is-normal">
+            <i class="fas fa-box-archive mr-1"></i>
+            Archived
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="section">
+    <%= @post.content %>
+  </section>
+</div>

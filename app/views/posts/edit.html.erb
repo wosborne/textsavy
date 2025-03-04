@@ -1,0 +1,18 @@
+<section class="section">
+  <div class="container is-max-tablet">
+    <div class="level">
+      <div class="level-left">
+        <%= link_to post_path(@post), class: "button is-ghost" do %>
+          <span class="icon">
+            <i class="fas fa-arrow-left"></i>
+          </span>
+          <span>Back</span>
+        <% end %>
+      </div>
+    </div>
+
+    <h1 class="title">Edit Post</h1>
+
+    <%= render "form" %>
+  </div>
+</section>

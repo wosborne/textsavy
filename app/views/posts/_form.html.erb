@@ -1,0 +1,39 @@
+<%= form_with model: @post do |form| %>
+  <div class="field">
+    <%= form.label :title, class: "label" %>
+
+    <div class="control">
+      <%= form.text_field :title, class: "input", placeholder: "Title" %>
+    </div>
+    <%= render "shared/errors_for", object: @post, attr: :title %>
+  </div>
+
+  <div class="field">
+    <%= form.rich_textarea :content %>
+    <%= render "shared/errors_for", object: @post, attr: :content %>
+  </div>
+
+  <div class="level">
+    <div class="level-left">
+      <% if @post.persisted? %>
+        <%= button_to post_path(@post), method: :delete, data: { turbo_confirm: 'Are you sure? This will permanently delete this post.' }, class: "button is-danger is-outlined" do %>
+          <span class="icon">
+            <i class="fas fa-trash"></i>
+          </span>
+          <span>Delete</span>
+        <% end %>
+
+        <%= button_to post_path(@post), method: :patch, params: { post: { archived: true }}, class: "button is-warning is-outlined" do %>
+          <span class="icon">
+            <i class="fas fa-box-archive"></i>
+          </span>
+          <span>Archive</span>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="level-right">
+      <%= form.submit class: "button is-primary" %>
+    </div>
+  </div>
+<% end %>
