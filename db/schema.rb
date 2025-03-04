@@ -51,8 +51,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_26_201430) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.integer "user_id"
-    t.boolean "archived"
+    t.boolean "archived", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
