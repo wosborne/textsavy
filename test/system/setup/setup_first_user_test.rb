@@ -27,4 +27,19 @@ class SetupFirstUserTest < ApplicationSystemTestCase
     assert_no_text "New post"
     assert_text "Blog"
   end
+
+  test "returns errors password doesn't match" do
+    User.destroy_all
+
+    visit root_path
+
+    fill_in "Email address", with: "test@email.com"
+    fill_in "Password", with: "password"
+    fill_in "Password confirmation", with: "password-unmatched"
+
+    click_on "Create User"
+
+    assert_current_path new_setup_path
+    assert_text "Password confirmation doesn't match Password"
+  end
 end
