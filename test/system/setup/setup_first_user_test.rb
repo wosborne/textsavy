@@ -20,7 +20,7 @@ class SetupFirstUserTest < ApplicationSystemTestCase
     assert_text "New post"
   end
 
-  test "does not redircet if user already exists" do
+  test "does not redirect if user already exists" do
     visit root_path
 
     assert_current_path root_path
