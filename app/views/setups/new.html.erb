@@ -1,0 +1,40 @@
+<section class="hero is-fullheight">
+  <div class="hero-body">
+    <div class="container is-max-tablet">
+      <div class="box">
+        <section class="section">
+          <h1 class="title has-text-centered">Create your administrative user</h1>
+          
+          <%= form_with model: @user, url: setup_path do |form| %>
+            <div class="field">
+                <%= form.label :email_address, class: "label" %>
+              <div class="control">
+                <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "input is-medium" %>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= form.label :password, class: "label" %>
+              <div class="control">
+                <%= form.password_field :password, required: true, placeholder: "Enter your password", maxlength: 72, class: "input is-medium" %>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= form.label :password_confirmation, class: "label" %>
+              <div class="control">
+                <%= form.password_field :password_confirmation, required: true, placeholder: "Confirm password", maxlength: 72, class: "input is-medium" %>
+              </div>
+            </div>
+
+            <div class="field has-addons has-addons-centered">
+              <div class="control">
+                <%= form.submit "Create User", class: "button is-info is-medium" %>
+              </div>
+            </div>
+          <% end %>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
