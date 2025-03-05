@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Authentication
-  before_action :setup_initial_user
+  before_action :redirect_to_setup_if_no_users_exist
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def setup_initial_user
+  def redirect_to_setup_if_no_users_exist
     redirect_to new_setup_path unless User.exists?
   end
 end
