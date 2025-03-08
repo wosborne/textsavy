@@ -1,0 +1,23 @@
+<%= form_with model: @blog, url: blog_path do |form| %>
+  <div class="field">
+    <%= form.label :title, class: "label" %>
+    <div class="control">
+      <%= form.text_field :title, autofocus: true, placeholder: "My new blog", class: "input is-medium" %>
+    </div>
+    <%= render "shared/errors_for", object: @blog, attr: :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, class: "label" %>
+    <div class="control">
+      <%= form.text_area :description, class: "textarea is-medium", placeholder: "Who are you? What is your blog about? Who is it for?" %>
+    </div>
+    <%= render "shared/errors_for", object: @blog, attr: :description %>
+  </div>
+
+  <div class="field has-addons has-addons-centered">
+    <div class="control">
+      <%= form.submit class: "button is-info is-medium" %>
+    </div>
+  </div>
+<% end %>

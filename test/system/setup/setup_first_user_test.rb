@@ -1,8 +1,9 @@
 require "application_system_test_case"
 
 class SetupFirstUserTest < ApplicationSystemTestCase
-  test "redirects to create first user on intial load" do
+  test "redirects to create first user and blog on intial load" do
     User.destroy_all
+    Blog.destroy_all
 
     visit root_path
 
@@ -15,6 +16,14 @@ class SetupFirstUserTest < ApplicationSystemTestCase
     fill_in "Password confirmation", with: "password"
 
     click_on "Create User"
+
+    assert_selector "h1", text: "Name and describe your blog"
+    assert_current_path new_blog_path
+
+    fill_in "Title", with: "My Blog"
+    fill_in "Description", with: "My blog description"
+
+    click_on "Create Blog"
 
     assert_current_path root_path
     assert_text "New post"

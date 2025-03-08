@@ -15,7 +15,7 @@ class SetupsController < ApplicationController
       User.authenticate_by(user_params.slice(:email_address, :password))
       start_new_session_for @user
 
-      redirect_to root_path, notice: "User created successfully"
+      redirect_to new_blog_path, notice: "User created successfully"
     else
       render :new, status: :unprocessable_entity
     end

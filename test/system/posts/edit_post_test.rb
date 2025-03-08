@@ -4,6 +4,8 @@ class EditPostTest < ApplicationSystemTestCase
   test "authenticated user can edit a post" do
     sign_in_as(users(:one))
 
+    assert_text "A Live Post"
+
     click_on "A Live Post"
     click_on "Edit"
 
@@ -25,6 +27,8 @@ class EditPostTest < ApplicationSystemTestCase
 
   test "returns errors if required fields missing" do
     sign_in_as(users(:one))
+
+    assert_text "A Live Post"
 
     click_on "A Live Post"
     click_on "Edit"
