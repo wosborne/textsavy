@@ -1,4 +1,6 @@
 class BlogsController < ApplicationController
+  before_action :redirect_if_blog_already_exists, only: %i[new create]
+
   def edit
     @blog = current_user.blog
   end
@@ -31,5 +33,9 @@ class BlogsController < ApplicationController
 
   def user_params
     params.require(:blog).permit(:title, :description)
+  end
+
+  def redirect_if_blog_already_exists
+    redirect_to root_path if current_user.blog.present?
   end
 end
