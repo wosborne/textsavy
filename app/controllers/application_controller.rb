@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= authenticated? && Current.session&.user
   end
 
-  helper_method :blog
-  def blog
+  helper_method :current_blog
+  def current_blog
     current_user&.blog
   end
 

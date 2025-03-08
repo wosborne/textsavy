@@ -1,7 +1,7 @@
 <div class="container is-max-tablet">
   <section class="section">
-    <h1 class="title is-size-1"><%= blog&.title || "My Blog" %></h1>
-    <p><%= blog&.description || "Welcome to my blog" %></p>
+    <h1 class="title is-size-1"><%= current_blog&.title || "My Blog" %></h1>
+    <p><%= current_blog&.description || "Welcome to my blog" %></p>
 
     <%= link_to "Edit", edit_blog_path, class: "button is-small" %>
   </section>

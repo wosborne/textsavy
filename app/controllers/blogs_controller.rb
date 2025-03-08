@@ -2,11 +2,11 @@ class BlogsController < ApplicationController
   before_action :redirect_if_blog_already_exists, only: %i[new create]
 
   def edit
-    @blog = current_user.blog
+    @blog = current_blog
   end
 
   def update
-    if current_user.blog.update(user_params)
+    if current_blog.update(user_params)
       redirect_to posts_path
     else
       render :edit, status: :unprocessable_entity
@@ -36,6 +36,6 @@ class BlogsController < ApplicationController
   end
 
   def redirect_if_blog_already_exists
-    redirect_to root_path if current_user.blog.present?
+    redirect_to root_path if current_blog.present?
   end
 end
