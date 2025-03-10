@@ -11,7 +11,7 @@ class EditBlogDetailsTest < ApplicationSystemTestCase
 
     click_on "Update Blog"
 
-    assert_current_path posts_path
+    assert_current_path root_path
 
     assert_text "My new blog"
     assert_text "This is all about me"

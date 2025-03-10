@@ -7,7 +7,7 @@ class BlogsController < ApplicationController
 
   def update
     if current_blog.update(user_params)
-      redirect_to posts_path
+      redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
     end
