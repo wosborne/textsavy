@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
     @current_user ||= authenticated? && Current.session&.user
   end
 
+  helper_method :current_blog
+  def current_blog
+    current_user&.blog || Blog.first
+  end
+
   private
 
   def redirect_to_setup_if_no_users_exist

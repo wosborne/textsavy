@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_blog.posts.build(post_params)
 
     if @post.save
       redirect_to post_path(@post), notice: "Post was successfully created."
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
 
-    redirect_to posts_path, notice: "Post was successfully destroyed."
+    redirect_to root_path, notice: "Post was successfully destroyed."
   end
 
   private
@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def get_posts
-    current_user ? Post.where(filter_params[:filter]) : Post.where(archived: false)
+    current_user ? current_blog.posts.where(filter_params[:filter]) : current_blog.posts.where(archived: false)
   end
 
   def set_post

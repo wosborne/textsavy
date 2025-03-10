@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   resources :posts
   resource :setup, only: %w[new create]
+  resource :blog, only: %w[new create edit update]
 end

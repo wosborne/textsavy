@@ -3,7 +3,7 @@ require "test_helper"
 class PostTest < ActiveSupport::TestCase
   test "valid post" do
     action_text = ActionText::Content.new("Valid post content")
-    post = Post.new(title: "Valid Post", content: action_text)
+    post = Post.new(title: "Valid Post", content: action_text, blog: blogs(:one))
     assert post.valid?
   end
 
