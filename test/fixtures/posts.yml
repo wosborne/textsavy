@@ -5,9 +5,11 @@
 # below each fixture, per the syntax in the comments below
 #
 live:
+  blog: one
   title: A Live Post
   archived: false
 
 archived:
+  blog: one
   title: An Archived Post
   archived: true

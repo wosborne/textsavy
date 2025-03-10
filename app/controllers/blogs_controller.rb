@@ -18,7 +18,6 @@ class BlogsController < ApplicationController
   end
 
   def create
-    # redirect to root_path if blog already exists
     @blog = Blog.new(user_params)
     @blog.user = current_user
 

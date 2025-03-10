@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_blog
   def current_blog
-    current_user&.blog
+    current_user&.blog || Blog.first
   end
 
   private
