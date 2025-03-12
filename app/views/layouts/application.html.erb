@@ -26,6 +26,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div style="min-height: 100vh;">
+      <%= yield %>
+    </div>
+
+    <%= render "layouts/footer" %>
   </body>
 </html>
