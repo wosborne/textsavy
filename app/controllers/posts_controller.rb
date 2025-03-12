@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :protect_archived_post, only: %w[show]
 
   def index
-    @posts = get_posts.order(created_at: :desc).with_rich_text_content
+    set_page_and_extract_portion_from get_posts.order(created_at: :desc).with_rich_text_content
   end
 
   def new
