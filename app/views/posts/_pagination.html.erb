@@ -1,0 +1,24 @@
+<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+  <%= link_to "Previous",
+    posts_path(page: @page.number-1,filter: params.dig(:filter).as_json),
+    class: "pagination-previous",
+    disabled: @page.first?,
+    style: "#{@page.first? ? "pointer-events: none;" : ""}" %>
+
+  <%= link_to "Next page",
+    posts_path(page: @page.next_param, filter: params.dig(:filter).as_json),
+    class: "pagination-next disabled",
+    disabled: @page.last? || @page.only?,
+    style: "#{@page.last? ? "pointer-events: none;" : ""}" %>
+  
+  <ul class="pagination-list">
+    <% @page.recordset.page_count.times do |i| %>
+      <li>
+        <%= link_to i+1,
+          posts_path(page: i+1, filter: params.dig(:filter).as_json),
+          class: "pagination-link #{@page.number == i+1? "is-current" : ""}"
+        %>
+      </li>
+    <% end %>
+  </ul>
+</nav>
