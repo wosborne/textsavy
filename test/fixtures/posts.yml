@@ -8,8 +8,10 @@ live:
   blog: one
   title: A Live Post
   archived: false
+  slug: a-live-post
 
 archived:
   blog: one
   title: An Archived Post
   archived: true
+  slug: an-archived-post
