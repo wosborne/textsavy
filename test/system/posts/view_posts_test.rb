@@ -27,6 +27,8 @@ class ViewPostsTest < ApplicationSystemTestCase
     assert_text "A Live Post"
     assert_text "An Archived Post"
 
+    assert_link "All", href: root_path
+
     click_on "Live"
 
     assert_text "A Live Post"
@@ -41,7 +43,7 @@ class ViewPostsTest < ApplicationSystemTestCase
   test "unauthenticated users can't see post filters" do
     visit root_url
 
-    assert_no_link "All"
+    assert_no_link "All", href: root_path
     assert_no_selector ".button", text: "Live"
     assert_no_link "Archive"
   end

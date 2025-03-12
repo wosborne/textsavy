@@ -16,4 +16,11 @@ class EditBlogDetailsTest < ApplicationSystemTestCase
     assert_text "My new blog"
     assert_text "This is all about me"
   end
+
+  test "an unathenticated user can not see the edit button" do
+    visit root_path
+
+    assert_current_path root_path
+    assert_no_text "Edit"
+  end
 end
